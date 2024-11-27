@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(1+1);
+
+        // Write a function called getComputerChoice using Math.Random()
+        // Math.random() has a range of greater than or equal to 0 and less than 1
+        // Assign each one third of that range to rock, paper and scissors
+
+        let compChoice;
+        function getComputerChoice(compChoice) {
+            let num = Math.random();
+            
+            {  
+                if (num >= 0 && num < 0.33)
+                {
+                   return compChoice = "Rock!";
+                }
+                else if(num >= 0.33 && num < 0.66)
+                {
+                    return compChoice = "Paper!";
+                }
+                else(num >= 0.66 && num < 1)
+                {
+                    return compChoice = "Scissors!";
+                }
+
+            }
+            }
+
+        
+
+        console.log(getComputerChoice(compChoice));
+
+    </script>
+</body>
+</html>
