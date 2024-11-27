@@ -108,7 +108,19 @@
                 }
             }
 
+            function playGame() {
+                let round = playRound(humChoice,compChoice);
+                for (i = 1; i < 6; i++ ){
+                    humChoice = getHumanChoice();
+                    compChoice = getComputerChoice();
+                    playRound(humChoice,compChoice);
+                    console.log("Your score :" + humanScore, "Computer score:" + computerScore);
+                } 
+                
+            }
             
+            playGame();
+
             
 
 
