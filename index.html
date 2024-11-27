@@ -38,6 +38,29 @@
 
         console.log(getComputerChoice(compChoice));
 
+        // Write a logic to get human choice
+
+        function getHumanChoice(humChoice){
+                let userInput = prompt("Enter your choice(rock,paper or scissors):");
+                userInput = userInput.toLowerCase();
+                
+                if (userInput === "rock")
+                {
+                    return humChoice = "Rock!";
+                }
+                else if(userInput === "paper")
+                {
+                    return humChoice = "Paper!";
+                }
+                else (userInput === "scissor" || userInput === "scissors")
+                {
+                    return humChoice = "Scissors!";
+                }    
+            }
+
+            console.log(getHumanChoice);
+
+            
     </script>
 </body>
 </html>
