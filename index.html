@@ -7,60 +7,111 @@
 </head>
 <body>
     <script>
-        console.log(1+1);
 
         // Write a function called getComputerChoice using Math.Random()
         // Math.random() has a range of greater than or equal to 0 and less than 1
         // Assign each one third of that range to rock, paper and scissors
 
-        let compChoice;
-        function getComputerChoice(compChoice) {
+        function getComputerChoice() {
             let num = Math.random();
             
-            {  
+             
                 if (num >= 0 && num < 0.33)
                 {
-                   return compChoice = "Rock!";
+                   return  "Rock!";
                 }
                 else if(num >= 0.33 && num < 0.66)
                 {
-                    return compChoice = "Paper!";
+                    return "Paper!";
                 }
                 else(num >= 0.66 && num < 1)
                 {
-                    return compChoice = "Scissors!";
+                    return "Scissors!";
                 }
 
+            
             }
-            }
-
-        
-
-        console.log(getComputerChoice(compChoice));
+  
 
         // Write a logic to get human choice
 
-        function getHumanChoice(humChoice){
+        function getHumanChoice(){
                 let userInput = prompt("Enter your choice(rock,paper or scissors):");
                 userInput = userInput.toLowerCase();
                 
                 if (userInput === "rock")
                 {
-                    return humChoice = "Rock!";
+                    return "Rock!";
                 }
                 else if(userInput === "paper")
                 {
-                    return humChoice = "Paper!";
+                    return "Paper!";
                 }
                 else (userInput === "scissor" || userInput === "scissors")
                 {
-                    return humChoice = "Scissors!";
+                    return "Scissors!";
                 }    
             }
 
-            console.log(getHumanChoice);
+            // Declare two variables to keep the score
+
+            let humanScore = 0;
+            let computerScore = 0;
+
+            // write a logic to play a single round with humChoice and compChoice as parameters
+
+            humChoice = getHumanChoice();
+            compChoice = getComputerChoice();
+
+            function playRound(humChoice,compChoice) {
+
+                if (humChoice === compChoice) {
+                    console.log("You have a Tie!!, Play again.");
+                    humanScore += 0; 
+                    computerScore += 0;
+                }
+
+                if(humChoice === "Rock!") { 
+                    if (compChoice === "Paper!") {
+                        console.log("You lost!");
+                        computerScore++;
+                        }
+                    else 
+                    {
+                        console.log("You Won!");
+                        humanScore++;
+                    }    
+                }
+
+                if(humChoice === "Paper!") {
+
+                    if (compChoice === "Rock!") {
+                        console.log("You Won!");
+                        humanScore++;
+                        }
+                    else {
+                        console.log("You Lost!");
+                        computerScore++;
+                    }    
+                }
+
+                if(humChoice === "Scissors!") {
+
+                    if (compChoice === "Paper!") {
+                        console.log("You Won!");
+                        humanScore++;
+                        }
+                    else {
+                        console.log("You Lost!");
+                        computerScore++;
+                    }    
+                }
+            }
 
             
+            
+
+
     </script>
 </body>
 </html>
