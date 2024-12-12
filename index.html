@@ -15,43 +15,57 @@
         function getComputerChoice() {
             let num = Math.random();
             
-             
                 if (num >= 0 && num < 0.33)
                 {
-                   return  "Rock!";
+                   return  "Rock";
                 }
                 else if(num >= 0.33 && num < 0.66)
                 {
-                    return "Paper!";
+                    return "Paper";
                 }
-                else(num >= 0.66 && num < 1)
+                else
                 {
-                    return "Scissors!";
+                    return "Scissor";
                 }
 
             
             }
   
 
-        // Write a logic to get human choice
+        function humanInput () {
+                let userInput = prompt("Enter your choice(rock,paper or scissors):");
+                userInput = userInput.toLowerCase(); 
+                return userInput;
+            }
+
+            // Write a logic to get human choice
+            // Try to rewrite the below function using a do while loop instead of if else
+
+            // the do while loop runs until the condition is false and eventually the loop breaks out
+            // inside the do { this code} , we will write a if and else loop to return the choice
+            // if the condition is true then it will ask the user to input his/her choice again
+            // so in this situation, the condition = NOT a value that is euqal to EITHER rock,paper or scissor
 
         function getHumanChoice(){
-                let userInput = prompt("Enter your choice(rock,paper or scissors):");
-                userInput = userInput.toLowerCase();
-                
-                if (userInput === "rock")
+
+            do {
+                a = humanInput();
+
+                if (a === "rock")
                 {
-                    return "Rock!";
+                    return "Rock";
                 }
-                else if(userInput === "paper")
+                else if(a === "paper")
                 {
-                    return "Paper!";
+                    return "Paper";
                 }
-                else (userInput === "scissor" || userInput === "scissors")
+                else if (a === "scissor")
                 {
-                    return "Scissors!";
-                }    
-            }
+                    return "Scissor"; 
+                }
+               
+                } while (a !== "rock" || a !== "paper" || a !== "scissor" );
+        }      
 
             // Declare two variables to keep the score
 
@@ -60,19 +74,16 @@
 
             // write a logic to play a single round with humChoice and compChoice as parameters
 
-            humChoice = getHumanChoice();
-            compChoice = getComputerChoice();
 
             function playRound(humChoice,compChoice) {
 
-                if (humChoice === compChoice) {
-                    console.log("You have a Tie!!, Play again.");
-                    humanScore += 0; 
-                    computerScore += 0;
-                }
+                // if hc and cc are equal then make them play again
+                // if both are not equal then score them according to their play conditions
+         
+               
 
-                if(humChoice === "Rock!") { 
-                    if (compChoice === "Paper!") {
+                if(humChoice === "Rock") { 
+                    if (compChoice === "Paper") {
                         console.log("You lost!");
                         computerScore++;
                         }
@@ -83,9 +94,9 @@
                     }    
                 }
 
-                if(humChoice === "Paper!") {
+                if(humChoice === "Paper") {
 
-                    if (compChoice === "Rock!") {
+                    if (compChoice === "Rock") {
                         console.log("You Won!");
                         humanScore++;
                         }
@@ -95,9 +106,9 @@
                     }    
                 }
 
-                if(humChoice === "Scissors!") {
+                if(humChoice === "Scissor") {
 
-                    if (compChoice === "Paper!") {
+                    if (compChoice === "Paper") {
                         console.log("You Won!");
                         humanScore++;
                         }
@@ -107,23 +118,43 @@
                     }    
                 }
             }
+            
 
             function playGame() {
-                let round = playRound(humChoice,compChoice);
-                for (i = 1; i < 6; i++ ){
+             let round = 5;
+                for (i = 0; i < round; i++ ){
                     humChoice = getHumanChoice();
                     compChoice = getComputerChoice();
+                    if (humChoice === compChoice) {
+                        console.log("You have a Tie!!, Play again.");
+                        console.log(`Your choice -  ${humChoice}`);
+                        console.log(`Computer's choice -  ${compChoice}`);
+                        console.log(`Your score = ${humanScore}`);
+                        console.log(`Computer's score = ${computerScore}`);
+                        round++;
+                        continue ; }
+                        
                     playRound(humChoice,compChoice);
-                    console.log("Your score :" + humanScore, "Computer score:" + computerScore);
+            
+                    console.log(`Your choice -  ${humChoice}`);
+                    console.log(`Computer's choice -  ${compChoice}`);
+                    console.log(`Your score = ${humanScore}`);
+                    console.log(`Computer's score = ${computerScore}`);
                 } 
+
+                if(humanScore > computerScore) {
+                    console.log("You won the game!");
+                } else {
+                     console.log("You lost the game!");
+                }
                 
             }
+        
             
             playGame();
 
             
-
-
+ 
     </script>
 </body>
 </html>
