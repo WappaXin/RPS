@@ -6,155 +6,167 @@
     <title>Document</title>
 </head>
 <body>
+    <p>The player who reaches first to the 5 points wins the game.</p>
+    <button class="rock">Rock</button>
+    <button class="paper">Paper</button>
+    <button class="scissor">Scissor</button>
+
+    <h1>Results</h1>
+
+ 
     <script>
 
         // Write a function called getComputerChoice using Math.Random()
         // Math.random() has a range of greater than or equal to 0 and less than 1
         // Assign each one third of that range to rock, paper and scissors
 
+        
+        const body = document.querySelector("body");
+        const div = document.createElement("div");
+        div.classList.add("resultContainer");
+        body.appendChild(div);
+ 
+        div0 = document.createElement("div");
+        div1 = document.createElement("div");
+        div2 = document.createElement("div");
+        div3 = document.createElement("div");
+        div4 = document.createElement("div");
+        div5 = document.createElement("div");
+ 
+        div.appendChild(div0);
+        div.appendChild(div1);
+        div.appendChild(div2);
+        div.appendChild(div3);
+        div.appendChild(div4);
+        div.appendChild(div5);
+
+        const userChoice1 = document.querySelector("button.rock");
+        const userChoice2 = document.querySelector("button.paper");
+        const userChoice3 = document.querySelector("button.scissor");
+
         function getComputerChoice() {
             let num = Math.random();
             
-                if (num >= 0 && num < 0.33)
-                {
-                   return  "Rock";
-                }
-                else if(num >= 0.33 && num < 0.66)
-                {
-                    return "Paper";
-                }
-                else
-                {
-                    return "Scissor";
-                }
-
+            if (num >= 0 && num < 0.33)
+            { return  "Rock"; }
+            else if(num >= 0.33 && num < 0.66)
+            { return "Paper"; }
+            else 
+            { return "Scissor"; }  
+        }
             
-            }
+        // Declare two variables to keep the score
+        let humanScore = 0;
+        let computerScore = 0;
   
+        // write a logic to play a single round with humChoice and compChoice as parameters
+        function playRound(humChoice,compChoice) {
 
-        function humanInput () {
-                let userInput = prompt("Enter your choice(rock,paper or scissors):");
-                userInput = userInput.toLowerCase(); 
-                return userInput;
+            if (humChoice === compChoice) {     
+                    div0.textContent = `You have a Tie!!, Play again.`;         
+                    result();
+                    return;
+                    }
+        
+            if(humChoice === "Rock") { 
+                if (compChoice === "Paper") {
+                    div0.textContent = `You lose!`;
+                    ++computerScore;
+                    }
+                else {
+                    div0.textContent = `You won!`;
+                    ++humanScore;
+                }    
             }
 
-            // Write a logic to get human choice
-            // Try to rewrite the below function using a do while loop instead of if else
-
-            // the do while loop runs until the condition is false and eventually the loop breaks out
-            // inside the do { this code} , we will write a if and else loop to return the choice
-            // if the condition is true then it will ask the user to input his/her choice again
-            // so in this situation, the condition = NOT a value that is euqal to EITHER rock,paper or scissor
-
-        function getHumanChoice(){
-
-            do {
-                a = humanInput();
-
-                if (a === "rock")
-                {
-                    return "Rock";
-                }
-                else if(a === "paper")
-                {
-                    return "Paper";
-                }
-                else if (a === "scissor")
-                {
-                    return "Scissor"; 
-                }
-               
-                } while (a !== "rock" || a !== "paper" || a !== "scissor" );
-        }      
-
-            // Declare two variables to keep the score
-
-            let humanScore = 0;
-            let computerScore = 0;
-
-            // write a logic to play a single round with humChoice and compChoice as parameters
-
-
-            function playRound(humChoice,compChoice) {
-
-                // if hc and cc are equal then make them play again
-                // if both are not equal then score them according to their play conditions
-         
-               
-
-                if(humChoice === "Rock") { 
-                    if (compChoice === "Paper") {
-                        console.log("You lost!");
-                        computerScore++;
-                        }
-                    else 
-                    {
-                        console.log("You Won!");
-                        humanScore++;
-                    }    
-                }
-
-                if(humChoice === "Paper") {
-
-                    if (compChoice === "Rock") {
-                        console.log("You Won!");
-                        humanScore++;
-                        }
+            if(humChoice === "Paper") {
+                if (compChoice === "Rock") {
+                    div0.textContent = `You won!`;
+                    humanScore++;
+                    }
                     else {
-                        console.log("You Lost!");
-                        computerScore++;
+                    div0.textContent = `You lose!`;
+                    computerScore++;
                     }    
-                }
-
-                if(humChoice === "Scissor") {
-
-                    if (compChoice === "Paper") {
-                        console.log("You Won!");
-                        humanScore++;
-                        }
-                    else {
-                        console.log("You Lost!");
-                        computerScore++;
-                    }    
-                }
-            }
-            
-
-            function playGame() {
-             let round = 5;
-                for (i = 0; i < round; i++ ){
-                    humChoice = getHumanChoice();
-                    compChoice = getComputerChoice();
-                    if (humChoice === compChoice) {
-                        console.log("You have a Tie!!, Play again.");
-                        console.log(`Your choice -  ${humChoice}`);
-                        console.log(`Computer's choice -  ${compChoice}`);
-                        console.log(`Your score = ${humanScore}`);
-                        console.log(`Computer's score = ${computerScore}`);
-                        round++;
-                        continue ; }
-                        
-                    playRound(humChoice,compChoice);
-            
-                    console.log(`Your choice -  ${humChoice}`);
-                    console.log(`Computer's choice -  ${compChoice}`);
-                    console.log(`Your score = ${humanScore}`);
-                    console.log(`Computer's score = ${computerScore}`);
-                } 
-
-                if(humanScore > computerScore) {
-                    console.log("You won the game!");
-                } else {
-                     console.log("You lost the game!");
                 }
                 
-            }
-        
-            
-            playGame();
+                if(humChoice === "Scissor") {                 
+                    if (compChoice === "Paper") {
+                        div0.textContent = `You won!`;
+                        humanScore++;
+                    }
+                    else {
+                        div0.textContent = `You lose!`;
+                        computerScore++;
+                    }    
+                }
 
-            
- 
+                result();
+
+                if (humanScore == 5){
+                    div5.textContent = `You won the Game!!`; 
+                    clear();
+                } else if (computerScore == 5){
+                    div5.textContent = `You lost the Game..`;  
+                    clear(); 
+                    }
+                }
+                
+        function result() {
+            div1.textContent = `Your choice -  ${humChoice}`;
+            div2.textContent = `Computer's choice -  ${compChoice}`;
+            div3.textContent = `Your score = ${humanScore}`;
+            div4.textContent = `Computer's score = ${computerScore}`;
+        }
+
+        function playGame(){
+            userChoice1.addEventListener("click" , () => {humChoice = "Rock"; compChoice = getComputerChoice(); playRound(humChoice,compChoice) });
+            userChoice2.addEventListener("click" , () => {humChoice = "Paper"; compChoice = getComputerChoice(); playRound(humChoice,compChoice) });
+            userChoice3.addEventListener("click" , () => {humChoice = "Scissor"; compChoice = getComputerChoice(); playRound(humChoice,compChoice) });
+        }
+
+        function btn(){
+            playAgainBtn = document.createElement("button");
+            div.appendChild(playAgainBtn);
+            playAgainBtn.textContent = 'Play Again'; 
+                 
+        }
+
+        function reset(event){ 
+            div1.textContent = '';
+            div2.textContent = ''; 
+            div3.textContent = '';
+            div4.textContent = '';
+            humanScore = 0;
+            computerScore = 0;
+        }
+        
+        
+        function clear() {
+            result();
+            btn();
+            userChoice1.disabled = true;
+            userChoice2.disabled = true;
+            userChoice3.disabled = true;
+            playAgainBtn.addEventListener("click" , (event) => {
+                div0.textContent ='';
+                div1.textContent = '';
+                div2.textContent = ''; 
+                div3.textContent = '';
+                div4.textContent = '';
+                div5.textContent = '';
+                humanScore = 0;
+                computerScore = 0;
+                userChoice1.disabled = false;
+                userChoice2.disabled = false;
+                userChoice3.disabled = false;
+                playAgainBtn.disabled = true;
+                div.removeChild(playAgainBtn);
+            });
+        }
+        
+        playGame();
+
     </script>
 </body>
 </html>
